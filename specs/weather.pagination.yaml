@@ -1,0 +1,7 @@
+# Which operations get a paginated <name>_all method, and how they page. Rules are tried in
+# order, and generate.py prints how many operations each matched.
+- name: feature collections
+  # GeoJSON {"features": [...], "pagination": {"next": "https://api.weather.gov/...?cursor=..."}}
+  has_parameter: [cursor]
+  response: {has: [features, pagination]}
+  paginate: {type: next_url, path: pagination.next, items: features}

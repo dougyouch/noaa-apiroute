@@ -1,0 +1,13 @@
+{
+  "Gauges_ListGauges": "gauges.list",
+  "Gauges_GetRiverAtAGlanceData": "gauges.river_at_a_glance",
+  "Gauges_GetGauge": "gauges.get",
+  "Gauges_GetRatings": "gauges.ratings",
+  "Gauges_GetUpstreamDownstream": "gauges.river_flow",
+  "Gauges_GetStageFlowAll": "gauges.stage_flow",
+  "Gauges_GetStageFlow": "gauges.stage_flow_product",
+  "Health_Monitor": "health.monitor",
+  "Products_GetStageFlow": "products.stage_flow",
+  "Reaches_GetReach": "reaches.get",
+  "Reaches_GetStreamflow": "reaches.streamflow"
+}

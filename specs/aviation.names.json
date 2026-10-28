@@ -1,0 +1,23 @@
+{
+  "GET /api/data/metar": "metar",
+  "GET /api/data/taf": "taf",
+  "GET /api/data/pirep": "pirep",
+  "GET /api/data/airsigmet": "airsigmet",
+  "GET /api/data/isigmet": "isigmet",
+  "GET /api/data/sigmet": "sigmet",
+  "GET /api/data/gairmet": "gairmet",
+  "GET /api/data/airmet": "airmet",
+  "GET /api/data/tcf": "tcf",
+  "GET /api/data/cwa": "cwa",
+  "GET /api/data/windtemp": "wind_temp",
+  "GET /api/data/areafcst": "area_forecast",
+  "GET /api/data/fcstdisc": "forecast_discussion",
+  "GET /api/data/mis": "mis",
+  "GET /api/data/stationinfo": "station_info",
+  "GET /api/data/airport": "airport",
+  "GET /api/data/navaid": "navaid",
+  "GET /api/data/fix": "fix",
+  "GET /api/data/feature": "feature",
+  "GET /api/data/obstacle": "obstacle",
+  "GET /api/data/dataserver": "data_server"
+}

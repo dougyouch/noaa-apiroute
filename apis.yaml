@@ -1,0 +1,46 @@
+# Every API this package generates a client for. scripts/generate.py reads it; edit it and
+# regenerate (`uv run python scripts/generate.py --fetch`), never the generated code.
+package: noaa_apiroute
+apis:
+  - name: weather
+    title: National Weather Service API (api.weather.gov)
+    format: openapi
+    spec: https://api.weather.gov/openapi.json
+    docs: https://www.weather.gov/documentation/services-web-api
+    module: weather
+    client: WeatherApi
+    base_class: noaa_apiroute.auth:NoaaAuth
+    # the spec has no tags, so this map gives its 69 operations sections: weather.alerts.active(),
+    # weather.points.get(), weather.gridpoints.forecast()
+    operation_names: specs/weather.names.json
+    # the API sends enum values the spec doesn't list (a forecast's windDirection is "" in a
+    # calm), so typed models accept any string where the spec gives a list
+    open_enums: true
+    # alerts, stations and observations page with a cursor and pagination.next
+    pagination: specs/weather.pagination.yaml
+  - name: aviation
+    title: AviationWeather.gov Data API
+    format: openapi
+    spec: https://aviationweather.gov/data/schema/openapi.yaml
+    docs: https://aviationweather.gov/data/api/
+    base_url: https://aviationweather.gov   # the spec lists no servers
+    module: aviation
+    client: AviationWeatherApi
+    base_class: noaa_apiroute.auth:NoaaAuth
+    # the spec has no operationIds; the map names each operation by its path: aviation.metar()
+    # the spec says fields are never null that the API sends as null (a TAF's timeBec), and
+    # lists fewer enum values than the API sends
+    nullable_fields: true
+    open_enums: true
+    operation_names: specs/aviation.names.json
+  - name: water
+    title: National Water Prediction Service API
+    format: openapi
+    spec: https://api.water.noaa.gov/nwps/v1/docs/swagger.json
+    docs: https://api.water.noaa.gov/nwps/v1/docs/
+    base_url: https://api.water.noaa.gov    # the spec has no host; its paths start /nwps/v1
+    module: water
+    client: WaterApi
+    base_class: noaa_apiroute.auth:NoaaAuth
+    # Gauges_GetGauge -> water.gauges.get()
+    operation_names: specs/water.names.json

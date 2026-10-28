@@ -1,0 +1,60 @@
+[project]
+name = "noaa-apiroute"
+dynamic = ["version"]  # from the git tag (hatch-vcs): every merge to main is tagged and released
+description = "Python clients for NOAA's weather APIs (weather.gov, AviationWeather.gov, the National Water Prediction Service), generated with apiroute from their published OpenAPI specs: sync and async, typed pydantic models."
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Doug Youch", email = "dougyouch@gmail.com" }]
+requires-python = ">=3.10"
+keywords = ["noaa", "nws", "weather", "forecast", "aviation", "metar", "api", "client", "openapi", "httpx", "async", "pydantic"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Framework :: AsyncIO",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Scientific/Engineering :: Atmospheric Science",
+    "Typing :: Typed",
+]
+dependencies = ["apiroute>=2.6.0", "pydantic>=2.6"]
+
+[project.urls]
+Homepage = "https://github.com/dougyouch/noaa-apiroute"
+Repository = "https://github.com/dougyouch/noaa-apiroute"
+Issues = "https://github.com/dougyouch/noaa-apiroute/issues"
+Changelog = "https://github.com/dougyouch/noaa-apiroute/blob/main/CHANGELOG.md"
+
+[dependency-groups]
+dev = ["apiroute[codegen]>=2.6.0", "pytest>=8", "ruff>=0.6"]
+
+[build-system]
+requires = ["hatchling", "hatch-vcs"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/noaa_apiroute"]
+
+[tool.hatch.build.targets.sdist]
+exclude = ["specs"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+extend-exclude = ["specs"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]
