@@ -378,9 +378,9 @@ paths:
               - turb-hi
               - turb-lo
               - llws
-              - sfc_wind
+              - sfc-wind
               - ifr
-              - mtn_obs
+              - mtn-obs
               - ice
               - fzlvl
         - $ref: "#/components/parameters/date"
@@ -1099,15 +1099,15 @@ components:
       required: false
       explode: true
       schema:
-        type: number
-        default: 1.5
+        type: integer
+        default: 2
     hoursRequired:
       name: hours
       in: query
       description: Hours back to search
       required: true
       schema:
-        type: number
+        type: integer
     RawJSONGeoXML:
       name: format
       in: query
