@@ -799,7 +799,7 @@ paths:
       parameters:
         - name: ids
           in: query
-          description: three character identifier
+          description: Three letter identifier
           required: false
           examples:
             -:
@@ -863,7 +863,7 @@ paths:
       parameters:
         - name: ids
           in: query
-          description: 5 letter Fix ID(s)
+          description: Five letter fix ID(s)
           required: false
           examples:
             -:
@@ -936,6 +936,7 @@ paths:
         - Weather Data
       summary: Data Server
       description: Compatibility layer with previous Text Data Service. Station identifiers or a bounding box, as well as a time selection, are required.
+      deprecated: true
       parameters:
         - name: requestType
           in: query
@@ -1082,7 +1083,7 @@ components:
     bbox:
       name: bbox
       in: query
-      description: Geographic bounding box (lat0, lon0, lat1, lon1)
+      description: Geographic bounding box (lat0, lon0, lat1, lon1) with a maximum of three decimals
       required: false
       examples:
         -:
@@ -1100,7 +1101,6 @@ components:
       explode: true
       schema:
         type: integer
-        default: 2
     hoursRequired:
       name: hours
       in: query
